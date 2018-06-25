@@ -13,14 +13,14 @@ import fuzzyrules.utils._
 import fuzzyrules.classifiers._
 import keel.Reader
 
-object MainProject2 {
+object MainProject {
     def readTest(filename: String, classNames: Array[String]) = {
         val reader = new Reader(filename);
         reader.sets(0).getParsePoints().map(x => new TrainPoint(x._1, x._2));
     }
 
   def main(args: Array[String]): Unit = {
-    if(args.length == 3){   
+    if(args.length == 2){   
         println("Chi Algorith:")
         var classifier = new ChiClassifier(args(0));
         println(classifier.generateAndSummary(this.readTest(args(1), classifier.getKBase().getClassNames()), "Penalized_Certainty_Factor"));
